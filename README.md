@@ -7,7 +7,7 @@ C++ basic Twitter-like social network based on Observer Design Pattern.
 ## Compilation
 Compile the unit test on Linux console:
 
-`g++ -o sn social_network_main.cpp pubsub.cpp person.cpp person_test.cpp`
+`g++ -o sn social_network_main.cpp social_network.cpp pubsub.cpp person.cpp person_test.cpp`
 
 Run the output on Linux console:
 
