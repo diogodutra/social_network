@@ -5,13 +5,13 @@
 
 class Person : public Publisher, public Subscriber
 {
-private:
-	static int total_population;
-	int id;
-	
 public:
-	Person(string name);
-	int getTotalPopulation(void);
+	Person(const string name);
+	Person();
+	
+	string getName(void) const;
+	
+	void print(void) const;
 };
 
 #endif

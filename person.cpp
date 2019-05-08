@@ -1,13 +1,26 @@
 #include "person.hpp"
 
-int Person::total_population = 0;
-
-Person::Person(string name) : Publisher(name), Subscriber(name)
+Person::Person(const string name) : Publisher(name), Subscriber(name)
 {
-	this->id = this->total_population++;
+	
 }
 
-int Person::getTotalPopulation(void)
+string Person::getName(void) const
 {
-	return (total_population);
+	return this->Publisher::name;
+}
+
+void Person::print(void) const
+{
+	cout << "Name: " << this->getName();
+	cout << " ; Followers: ";
+	
+	vector<class AObserver*> followers = this->getFollowers();
+	
+	for (int j=0; j<followers.size(); j++)
+	{
+		cout << followers.at(j)->name << " , ";
+	}
+	
+	cout << flush;
 }

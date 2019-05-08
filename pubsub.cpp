@@ -2,7 +2,7 @@
 
 #include "pubsub.hpp"
 
-Publisher::Publisher(string name)
+Publisher::Publisher(const string name)
 {
 	this->name = name;
 }
@@ -12,7 +12,7 @@ void Publisher::attach(AObserver *sub)
 	subscribers.push_back(sub);
 }
 
-int Publisher::says(string speech)
+int Publisher::says(const string speech)
 {
 	cout << name << " says: " << speech << '\n';
 	
@@ -24,12 +24,17 @@ int Publisher::says(string speech)
 	return totalSubscribers;
 }
 
-int Publisher::geTotalFollowers()
+vector < class AObserver * > Publisher::getFollowers(void) const
+{
+	return this->subscribers;
+}
+
+int Publisher::geTotalFollowers(void) const
 {
 	return subscribers.size();
 }
 
-AObserver::AObserver(string name)
+AObserver::AObserver(const string name)
 {
 	this->name = name;
 }
@@ -39,7 +44,7 @@ void AObserver::follow(Publisher *pub)
 	pub->attach(this);
 }
 
-void Subscriber::hears(string speech)
+void Subscriber::hears(const string speech)
 {
-	cout << name << " hears: " << speech << '\n';
+	cout << this->name << " hears: " << speech << '\n';
 }

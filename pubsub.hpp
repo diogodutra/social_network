@@ -15,24 +15,26 @@ private:
 	vector < class AObserver * > subscribers; 
 public:
 	string name;
-	Publisher(string name);
+	Publisher(const string name);
 	void attach(AObserver *sub);
-	int says(string speech);
-	int geTotalFollowers();
+	int says(const string speech);
+	int geTotalFollowers(void) const;
+	vector < class AObserver * > getFollowers(void) const;
 };
 
 class AObserver {
 public:
 	string name;
-	AObserver(string name);
+	AObserver(const string name);
 	void follow(Publisher *pub);
-	virtual void hears(string speech)=0;
+	virtual void hears(const string speech)=0;
 };
 
 class Subscriber : public AObserver {
 public:
 	Subscriber(string name) : AObserver(name) {}
-	void hears(string speech);
+	//Subscriber(const Subscriber &other) : AObserver(other->name) {}
+	void hears(const string speech);
 };
 
 #endif
